@@ -10,9 +10,8 @@ function [data,meta] = import_mfet_mphox(filepath)
 % Yui Takeshita
 % MBARI
 % Created 3/23/2022
-
-
-
+% clear all; close all
+% filepath = '/Volumes/CarbonLab/jacki/OCR testing/jsl01.txt';
 % filepath = 'C:\Users\yui\Dropbox\Deep_sea_respirometer_barry\Test_cruise_March_2022\raw_data\control2.txt';
 % 
 % filepath = 'C:\Users\yui\Dropbox\Durafet_calibration\k2\SW\test_and_dev\test_no_discrete\M09R0308.txt';
@@ -125,19 +124,19 @@ while(1)
 end
 
 % there are different number of lines after headers and data depending on
-% version, so deal with that. they shoudl be blank lines.
-
+% version, so deal with that. they should be blank lines.
+% 
 while(isempty(fgetl(fid)))
     rownum = rownum+1;
 end
-
-% at this point rownum should equal headerlines for readtable
+% 
+% % at this point rownum should equal headerlines for readtable
 fclose(fid);
-
-% read data as a table
+% 
+% % read data as a table
 data = readtable(filepath,'headerlines', rownum, 'delimiter', '\t');
-
-% rename MM_DD_YYYYHH_MM_SS to DT (datetime)
+% 
+% % rename MM_DD_YYYYHH_MM_SS to DT (datetime)
 
 
 
