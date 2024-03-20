@@ -15,11 +15,18 @@ while true
     % parse data
     if isempty(line) || contains(line,'++**')
         continue;
-    else 
+    elseif ~contains(line,'= ')
         m = m+1;
+        line = RemoveComments(line);
         d = strtrim(strsplit(line,'\t'));
         meta(m,1:length(d)) = d;
+    elseif contains(line, '= ')
+        m = m+1;
+        line = RemoveComments(line);
+        d = ParseParams(line);
+        meta(m,1:length(d)) = d;
     end
-
+meta = meta(1:m,1:3);
+% meta = cell2table(meta,VariableNames={'Parameter','Equipped','Comments'});
 close('all')
 end
