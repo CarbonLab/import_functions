@@ -1,6 +1,7 @@
 function [data, n, c] = ParseData(fid,filename)
 
 % Initialize variables
+%adding comments for test 123
 estlength = length(readlines(filename)); % est final size reduces calc time
 estwidth = 100; % arbitrary
 data = cell(estlength,estwidth);
