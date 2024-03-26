@@ -1,8 +1,15 @@
-function data = ReadTableParser(filename)
+function data = ReadTableParser(filename,Vars)
 %READTABLEPARSER this is so simple and almost works perfectly. Maybe there
 %are more options that could be changed to use this instead of the method
 % I use in 'Parse.m'.
-data = readtable(filename,CommentStyle='//');
+
+opts = detectImportOptions(filename);
+opts.CommentStyle = '//';
+opts.VariableNames = Vars;
+
+opts.ExtraColumnsRule
+data = readtable(filename,opts);
+%try to make this work. will simplify everything greatly
 end
 
 % Adding comment to main branch
