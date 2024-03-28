@@ -6,11 +6,11 @@ function data = Parse(filename)
 % Ben Werb, Bwerb@mbari.org, 3/19/2024.
 
 fid = FileOpen(filename); % Open file
-Vars = VarNames(filename); % Load in correct variable names
+% Vars = VarNames(filename); % Load in correct variable names
+Vars = extractColumnNames(filename); % Read column names from file
 [data, n, c] = ParseData(fid,filename); % Read data
 % meta = ParseMeta(filename); % Read meta data. Complete this function
 data = TableData(data, n, c, Vars); % Format data in table
 %meta = TableMeta(meta); % Format meta data in table
 %data = CleanData(data); % Add clean up function
-
 end
