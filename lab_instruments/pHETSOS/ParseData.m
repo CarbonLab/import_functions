@@ -13,8 +13,7 @@ while true
         break;
     end
     % parse data
-    if isempty(line) || contains(line,'SampNum') || contains(line,'//')...
-            || contains(line,'#0000000')
+    if isempty(line) || contains(line,'SampNum') || contains(line,'//')
         continue;
     else
         n=n+1;
