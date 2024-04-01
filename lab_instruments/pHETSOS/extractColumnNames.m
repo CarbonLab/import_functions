@@ -15,10 +15,10 @@ function ColNames = extractColumnNames(filename)
         if line == -1
             break; % End of file reached
         end
-        if contains(line, '//')
-            continue; % Skip commented lines
+        if contains(line, '//') || isempty(line)
+            continue; % Skip commented or empty lines
         end
-        if contains(line, 'SampNum')
+        if ~contains(line, '//')  % Stop at header line
             break; % Header found
         end
     end
@@ -37,11 +37,6 @@ function ColNames = extractColumnNames(filename)
 str = fileread(filename);
 Pmfet_nano = contains(str,'MFET') && contains(str,'NanoFET');
 if Pmfet_nano == 1
-    % ColNames = {
-    %     'SampNum1','SampTime1','VbatMain1','VbatPos1','VbatNeg1',...
-    %     'TC_Cont1','Humidity1','Vrse1','Vrse_std1','Vk1','Vk_std1',...
-    %     'Ik1','Ib1','SampNum2','SampTime2','VBiasPos2','Vrse2',...
-    %     'Vrse_std2','Vk2','Vk_std2','Ik2','Ib2'};
 
      ColNames = {'SampNum','MM/DD/YYYY HH:MM:SS','VbatMain',...
          'VbiasPos','VbiasNeg','TC_cont','Humidity','Vrse','Vrse_std',...
