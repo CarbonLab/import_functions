@@ -8,7 +8,8 @@ function data = Parse(filename)
 fid = FileOpen(filename); % Open file
 Vars = extractColumnNames(filename); % Read column names from file
 [data, n, c] = ParseData(fid,filename); % Read data
-% meta = ParseMeta(filename); % Read meta data. Complete this function
 data = TableData(data, n, c, Vars); % Format data in table
-%data = CleanData(data); % Add clean up function
+data = convertTableStrings(data); % Convert strings to correct var type
+% data = CleanData(data); % Add clean up function
+% meta = ParseMeta(filename); % Read meta data. Complete this function
 end
