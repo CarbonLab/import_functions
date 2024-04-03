@@ -5,20 +5,20 @@ function convertedTable = convertTableStrings(data)
 % Complete**
     % Initialize the converted table as a copy of the input
     convertedTable = data;
-    
+
     % Get the variable names of the table
     varNames = data.Properties.VariableNames;
-    
+
     % Loop through each variable in the table
     for i = 1:length(varNames)
         % Get the data for the current variable
         currentData = data.(varNames{i});
-        
+
         % Check if the current variable is a string or cell array of strings
         if iscellstr(currentData) || isstring(currentData)
             % Try converting the string data to double
             numericData = str2double(currentData);
-            
+
             % Check if the conversion was successful (no NaNs)
             if all(~isnan(numericData))
                 % Update the converted table with the numeric data

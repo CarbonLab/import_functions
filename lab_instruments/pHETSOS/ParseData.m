@@ -3,7 +3,7 @@ function [data, n, c] = ParseData(fid,filename)
 % Initialize variables
 %adding comments for test 123
 estlength = length(readlines(filename)); % est final size reduces calc time
-estwidth = 100; % arbitrary
+estwidth = 1000; % arbitrary
 data = cell(estlength,estwidth);
 n = 0;
 %use fgetl to read the data
